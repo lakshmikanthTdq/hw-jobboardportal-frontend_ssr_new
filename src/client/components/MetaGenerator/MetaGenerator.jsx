@@ -7,9 +7,9 @@ const MetaGenerator = (props) => {
   }
 
   const { job } = props;
-  const cleanDescription = job.jobDesc ? 
-    job.jobDesc.replace(/<[^>]*>?/gm, '').substring(0, 200) + '...' : 
-    'Job description';
+  const cleanDescription = job.jobDesc && job.jobDesc.replace(/<[^>]*>?/gm, '').length >= 100
+  ? job.jobDesc.replace(/<[^>]*>?/gm, '').substring(0, 200) + '...'
+  : 'Join us at ' + (job.customerName || 'our company') + ' to work as a ' + job.jobTitle + ' in ' + (job.location || 'India') + '. Apply now to grow your career with us!';
   
   // Current timestamp for recency (when posting to LinkedIn)
   const currentTime = new Date().toISOString();
