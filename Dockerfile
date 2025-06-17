@@ -17,7 +17,7 @@ COPY . .
 # Set environment variables
 ENV NODE_OPTIONS=--max_old_space_size=2048
 ARG environment
-RUN npm run build:${environment}
+RUN npm run build
 
 # Use a  Nginx image for the final image
 FROM --platform=linux/amd64 nginx:alpine
