@@ -8,38 +8,39 @@ const MetaGenerator = (props) => {
 
   const { job } = props;
   const cleanDescription = job.jobDesc && job.jobDesc.replace(/<[^>]*>?/gm, '').length >= 100
-  ? job.jobDesc.replace(/<[^>]*>?/gm, '').substring(0, 200) + '...'
-  : 'Join us at ' + (job.customerName || 'our company') + ' to work as a ' + job.jobTitle + ' in ' + (job.location || 'India') + '. Apply now to grow your career with us!';
-  
+    ? job.jobDesc.replace(/<[^>]*>?/gm, '').substring(0, 100) + '...'
+    : 'Join us at ' + (job.customerName || 'our company') + ' to work as a ' + job.jobTitle + ' in ' + (job.location || 'India') + '. Apply now to grow your career with us!';
+
   // Current timestamp for recency (when posting to LinkedIn)
   const currentTime = new Date().toISOString();
-  
+
   return (
     <Helmet>
       {/* Basic Meta Tags - These are critical */}
       <title>{`${job.jobTitle} | ${job.customerName || 'Company'}`}</title>
       <meta name="description" content={cleanDescription} />
-      
+
       {/* LinkedIn prioritizes these specific Open Graph tags */}
       <meta property="og:title" content={job.jobTitle} />
       <meta property="og:description" content={cleanDescription} />
       <meta property="og:type" content="article" /> {/* "article" works better for LinkedIn job posts */}
       <meta property="og:url" content={props.url} />
-      <meta property="og:image" content={job.logoUrl || 'https://yourdomain.com/default-company-logo.png'} />
+      <meta property="og:image"
+        content={job.logoUrl ? job.logoUrl : 'https://yourdomain.com/default-logo.png'} />
       <meta property="og:site_name" content={job.customerName || 'Company'} />
       <meta property="og:published_time" content={currentTime} />
       <meta property="og:modified_time" content={currentTime} />
-      
+
       {/* Add article:publisher property for LinkedIn */}
       <meta property="article:publisher" content={job.customerName || 'Company'} />
       <meta property="article:section" content="Jobs" />
       <meta property="article:tag" content={job.jobType || 'Job'} />
-      
+
       {/* These LinkedIn-specific properties help with formatting */}
       <meta name="linkedin:owner" content={job.customerName || 'Company'} />
       <meta name="linkedin:location" content={job.location || 'Location'} />
       <meta name="author" content={job.customerName || 'Company'} />
-      
+
       {/* Structured Data - This significantly helps search engines and LinkedIn */}
       <script type="application/ld+json">
         {JSON.stringify({
@@ -52,7 +53,7 @@ const MetaGenerator = (props) => {
           "hiringOrganization": {
             "@type": "Organization",
             "name": job.customerName || "Company",
-            "logo": job.logoUrl || "https://yourdomain.com/default-company-logo.png",
+            "logo": job.logoUrl,
             "sameAs": props.url
           },
           "jobLocation": {

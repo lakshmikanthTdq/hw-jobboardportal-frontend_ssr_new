@@ -41,55 +41,90 @@ const renderReactApp = async (req, res) => {
                 method: "GET",
                 headers: { 'Countryid': parsedParams.countryId, "Customerid": parsedParams.customerId, "Portaltype": "JBPortal" }
             });
+            const imgRes = await fetch(`${process.env.REACT_APP_BASEURL3}/mgmt/customers/jobBoard`, {
+                method: "GET",
+                headers: { "Content-Type": "Application/json", "customerId": parsedParams.customerId },
+            });
             const jsonData = await apiRes.json();
+            const JsonImgData = await imgRes.json();
+            console.log("JsonImgData +++++++++++++++", JsonImgData);
+            console.log("parsedParams.segmentId +++++++++++++++", parsedParams.segmentId);
             const myData = jsonData.data[0];
             if (jsonData.code === 200) {
                 myData.jobType = (myData.jobType.split(",")).join(", ");
                 job = myData;
+                if (JsonImgData?.Data?.jobBoard.length > 0) {
+                    let newData = JsonImgData.Data.jobBoard.filter(x => parseInt(x.segmentId) === parseInt(parsedParams.segmentId))[0];
+                    console.log('Original logo path:=======', newData);
+                    newData['preview'] = newData.logo ? newData.logo.substring(newData.logo.lastIndexOf("/") + 1) : "/static/assests/img/HireWing.png";
+                    console.log('Original logo path 222222:=======', newData);
+                    job['logoUrl'] = '/static/assests/img/HireWing.png';
+                    if (!newData.logo.includes("s3.ap-south-2.amazonaws.com")) {
+                        const res1 = await fetch(`${process.env.REACT_APP_BASEURL3}/mgmt/customers/previewDocument`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "customerId": parsedParams.customerId,
+                            },
+                            body: JSON.stringify({ path: newData.logo }),
+                        });
+                        const docData = await res1.json();
+                        if (docData.code === 200 && docData.path) {
+                            newData.logo = docData.path;
+                            console.log("logoUrl +++++++++++++++++++", newData.logo);
+                            job['logoUrl'] = docData.path;
+                            console.log("logoUrl +++++++++++++++++++2222", job['logoUrl']);
+                        }
+                    } else if (newData.logo.includes("s3.ap-south-2.amazonaws.com")) {
+                        newData.logo = newData.logo;
+                        job['logoUrl'] = newData.logo;
+                        console.log("logoUrl +++++++++++++++++++", job['logoUrl']);
+                    }
+                }
             }
         }
     }
+    console.log("job details++++++++++++++++", job);
+if (!job) {
+    job = {
+        jobTitle: 'Job Not Found',
+        customerName: 'Unknown',
+        jobDesc: 'This job may have been removed.',
+        jobType: '',
+        location: '',
+        createdAt: new Date().toISOString()
+    };
+}
 
-    if (!job) {
-        job = {
-            jobTitle: 'Job Not Found',
-            customerName: 'Unknown',
-            jobDesc: 'This job may have been removed.',
-            jobType: '',
-            location: '',
-            createdAt: new Date().toISOString()
-        };
-    }
+const reactHtml = ReactDomServer.renderToString(
+    <StaticRouter location={req.url}>
+        <HelmetProvider context={helmetContext}>
+            <CacheProvider value={emotionCache}>
+                <Provider store={store}>
+                    <ErrorBoundary FallbackComponent={PageNotFound}>
+                        <App url={fullUrl} job={job} />
+                    </ErrorBoundary>
+                </Provider>
+            </CacheProvider>
+        </HelmetProvider>
+    </StaticRouter>
+);
 
-    const reactHtml = ReactDomServer.renderToString(
-        <StaticRouter location={req.url}>
-            <HelmetProvider context={helmetContext}>
-                <CacheProvider value={emotionCache}>
-                    <Provider store={store}>
-                        <ErrorBoundary FallbackComponent={PageNotFound}>
-                            <App url={fullUrl} job={job} />
-                        </ErrorBoundary>
-                    </Provider>
-                </CacheProvider>
-            </HelmetProvider>
-        </StaticRouter>
-    );
+const emotionChunks = extractCriticalToChunks(reactHtml);
+const emotionCss = constructStyleTagsFromChunks(emotionChunks);
+const { helmet } = helmetContext;
 
-    const emotionChunks = extractCriticalToChunks(reactHtml);
-    const emotionCss = constructStyleTagsFromChunks(emotionChunks);
-    const { helmet } = helmetContext;
+const indexHtml = await fs.promises.readFile(
+    path.resolve('dist', 'index.html'),
+    'utf-8'
+);
 
-    const indexHtml = await fs.promises.readFile(
-        path.resolve('dist', 'index.html'),
-        'utf-8'
-    );
+const renderedApp = indexHtml
+    .replace('<style></style>', emotionCss)
+    .replace('<title></title>', `${helmet.title.toString()}${helmet.meta.toString()}`)
+    .replace("<div id='root'></div>", `<div id='root'>${reactHtml}</div>`);
 
-    const renderedApp = indexHtml
-        .replace('<style></style>', emotionCss)
-        .replace('<title></title>', `${helmet.title.toString()}${helmet.meta.toString()}`)
-        .replace("<div id='root'></div>", `<div id='root'>${reactHtml}</div>`);
-
-    res.status(200).send(renderedApp);
+res.status(200).send(renderedApp);
 };
 
 app.use(renderReactApp);
