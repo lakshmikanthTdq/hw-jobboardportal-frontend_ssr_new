@@ -27,6 +27,8 @@ const MetaGenerator = (props) => {
       <meta property="og:url" content={props.url} />
       <meta property="og:image"
         content={job.logoUrl ? job.logoUrl : 'https://yourdomain.com/default-logo.png'} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="627" />
       <meta property="og:site_name" content={job.customerName || 'Company'} />
       <meta property="og:published_time" content={currentTime} />
       <meta property="og:modified_time" content={currentTime} />

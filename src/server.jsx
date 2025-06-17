@@ -47,18 +47,14 @@ const renderReactApp = async (req, res) => {
             });
             const jsonData = await apiRes.json();
             const JsonImgData = await imgRes.json();
-            console.log("JsonImgData +++++++++++++++", JsonImgData);
-            console.log("parsedParams.segmentId +++++++++++++++", parsedParams.segmentId);
             const myData = jsonData.data[0];
             if (jsonData.code === 200) {
                 myData.jobType = (myData.jobType.split(",")).join(", ");
                 job = myData;
                 if (JsonImgData?.Data?.jobBoard.length > 0) {
                     let newData = JsonImgData.Data.jobBoard.filter(x => parseInt(x.segmentId) === parseInt(parsedParams.segmentId))[0];
-                    console.log('Original logo path:=======', newData);
-                    newData['preview'] = newData.logo ? newData.logo.substring(newData.logo.lastIndexOf("/") + 1) : "/static/assests/img/HireWing.png";
-                    console.log('Original logo path 222222:=======', newData);
-                    job['logoUrl'] = '/static/assests/img/HireWing.png';
+                    newData['preview'] = newData.logo ? newData.logo.substring(newData.logo.lastIndexOf("/") + 1) : "/static/assests/img/HireWingBw.png";
+                    job['logoUrl'] = '/static/assests/img/HireWingBw.png';
                     if (!newData.logo.includes("s3.ap-south-2.amazonaws.com")) {
                         const res1 = await fetch(`${process.env.REACT_APP_BASEURL3}/mgmt/customers/previewDocument`, {
                             method: "POST",
@@ -71,20 +67,16 @@ const renderReactApp = async (req, res) => {
                         const docData = await res1.json();
                         if (docData.code === 200 && docData.path) {
                             newData.logo = docData.path;
-                            console.log("logoUrl +++++++++++++++++++", newData.logo);
                             job['logoUrl'] = docData.path;
-                            console.log("logoUrl +++++++++++++++++++2222", job['logoUrl']);
                         }
                     } else if (newData.logo.includes("s3.ap-south-2.amazonaws.com")) {
                         newData.logo = newData.logo;
                         job['logoUrl'] = newData.logo;
-                        console.log("logoUrl +++++++++++++++++++", job['logoUrl']);
                     }
                 }
             }
         }
     }
-    console.log("job details++++++++++++++++", job);
 if (!job) {
     job = {
         jobTitle: 'Job Not Found',
