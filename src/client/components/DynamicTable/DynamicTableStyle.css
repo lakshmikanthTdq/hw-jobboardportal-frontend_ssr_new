@@ -1,0 +1,240 @@
+.SearchBar {
+  border-radius: 50px !important;
+  background: #fafafa !important;
+  border: 1px solid #d1d1d1 !important;
+  width: 330px;
+  height: 40px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.SearchBar input:before {
+  content:attr(placeholder);
+  position:absolute;
+  left:5px;
+  top:5px;
+  white-space:nowrap;
+  color: red;
+  pointer-events:none;
+  z-index:-1;
+}
+
+@keyframes scrollText {
+  to {
+      transform: translateX(calc(100px - 300px));
+    }
+}
+
+/* hide the before on focus */
+.SearchBar:focus-within:before{
+   visibility:hidden;
+}
+
+.SearchBar input::placeholder, .SearchBar input:-ms-input-placeholder,
+.SearchBar input::-ms-input-placeholder,
+.rightnavsearchbar input::placeholder, .rightnavsearchbar input:-ms-input-placeholder,
+.rightnavsearchbar input::-ms-input-placeholder
+{
+  text-indent: -240px!important;
+  color: #6f6f6f!important;
+  font-size: 16px!important;
+  display:inline-block;
+  position:relative;
+  z-index:0;
+  animation: 4s scrollText forwards;
+  overflow:hidden;
+}
+
+.SearchBar:hover input::placeholder,
+.SearchBar input:active::placeholder,
+.SearchBar input:focus::placeholder {
+  color: #000 !important;
+}
+
+.customizedTable thead th {
+  background: #454545 !important;
+}
+
+.customizedTable .Mui-checked {
+  color: var(--primary-bg-color) !important;
+}
+
+.downloadicon,
+.deleteicon
+ {
+  position: relative;
+}
+
+.downloadicon:hover:after,
+.deleteicon:hover:after
+ {
+  color: var(--primary-bg-color);
+  content: "download";
+  position: absolute;
+  font-size: 9px;
+  top: 20px !important;
+  margin-top: -12px;
+  text-transform: capitalize!important;
+}
+
+.downloadicon:hover,
+.deleteicon:hover
+ {
+  background-color: transparent !important;
+}
+
+.downloadicon:hover svg {
+  fill: var(--primary-bg-color);
+}
+
+.deleteicon:hover:after,
+.deleteicon:hover svg {
+  content: "delete";
+  color: #ff0000 !important;
+  fill: #ff0000 !important;
+  margin-top: -10px;
+ 
+}
+.deleteicon:hover svg{
+ 
+  height: 23px;
+  width: 28px;
+}
+.deleteicon:hover {
+  content:  "delete";
+  margin-top: 5px;
+}
+
+
+.downloadicon svg{
+  height: 23px;
+  width: 28px;
+}
+.downloadicon:hover{
+  content:"download" ;
+  margin-top: 5px;
+}
+
+.downloadicon svg{
+  height: 18px;
+  width: 19.6px;
+  margin-top: -12px;
+  fill: #8e8e8e;
+}
+
+.deleteicon svg{
+  height: 17px;
+  width: 23px;
+  margin-top: -12px;
+  fill: #8e8e8e;
+}
+.downloadicon,
+.deleteicon {
+  cursor: pointer;
+}
+
+.modal {
+  color: #131413 !important;
+}
+
+.textttt {
+  margin-top: 300px;
+  margin-left: 750px;
+  font-family: "Roboto" !important;
+  font-weight: 400;
+  background-color: transparent !important;
+  color: aliceblue !important;
+  opacity: 0.87 !important;
+  font-size: medium;
+}
+
+.cancelbutton {
+  background-color: transparent !important;
+  color: aliceblue !important;
+  margin-left: 750px !important;
+}
+
+.deletebutton {
+  background-color: transparent !important;
+  color: red !important;
+}
+
+.closebutton {
+  background-color: transparent !important;
+  color: red !important;
+  margin-left: 1600px !important;
+  height: "200px" !important;
+  width: "200px" !important;
+  padding-top: 50px !important;
+}
+
+.postingdocumentsicons svg {
+  width: 28px;
+  padding-bottom: 2px;
+}
+
+.postingdocumentsicons button{
+  min-width: inherit!important;
+}
+
+.atsColumn {
+  width: 70px;
+  display: inline-block;
+}
+
+.atsColumn small:hover{
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+  color:var(--primary-bg-color);
+}
+
+.atsColumn small img{
+  margin-right: 3px;
+}
+
+.nodatasection {
+  text-align: center;
+  font-size: 18px;
+  margin: 25px -1px;
+}
+
+.nodatasection img {
+  display: block;
+  margin: 0 auto 19px;
+}
+
+.addRow{
+  float: right;
+    margin-top: -46px!important;
+    padding: 0!important;
+}
+
+.addRow:hover svg{
+  color: red!important;
+  cursor: pointer!important;
+}
+
+.customizedTable th, .customizedTable td{
+  height: 30px!important;
+}
+
+.nodataSection {
+  margin: 0 auto;
+  height: 25vh!important;
+}
+
+  .dynatableheadtext {
+    font-size: 16px !important;
+}
+
+.Rejected{
+  color: red;
+}
+
+.Success{
+  color: green;
+}
+
+.Approved{
+  color:var(--primary-bg-color)
+}

@@ -1,0 +1,789 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+:root {
+  /* Primary Colors */
+  --primary-bg-color: #FFD800;
+  --secondary-bg-color: #3B4046;
+
+  /* Text Colors */
+  --primary-background-text-color: #3B4046;
+  --secondary-background-text-color: #ffffff;
+
+  /* Font Family */
+  --applications-font-family: "Roboto", sans-serif;
+}
+*,
+p,
+div,
+li,
+span,
+small,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+textarea,
+table,
+td,
+th,
+section,
+article,
+aside,
+footer,
+header,
+nav {
+  font-family: var(--applications-font-family) !important;
+  /* font-size: 16px; */
+}
+
+body {
+  background-color: white;
+}
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.headerlogotext{
+  display: flex;
+  height: 75px !important;
+}
+.headerBar {
+  background: #3b4046 ;
+  height: 70px;
+  /* border-radius: 0 0 30px 30px; */
+  /* height: 70px !important; */
+  z-index: 999 !important;
+}
+
+.navbarSection .MuiDrawer-paper {
+  z-index: 998 !important;
+}
+
+.headerBar .MuiToolbar-regular {
+  padding: 0 4.9%;
+  justify-content: space-between;
+}
+
+.headerBar .MuiTypography-h6 img {
+  width: 101px;
+  margin-top: 10px;
+  margin-right: 30px;
+}
+
+.headerBar img:hover,
+.hirewingImg {
+  cursor: pointer !important;
+}
+
+.headerBar .MuiButton-text a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: capitalize;
+  margin: 0 7px;
+}
+
+.headerBar .MuiButton-text:hover a,
+.headerBar .MuiButton-text:active a {
+  font-weight: 500;
+  color: var(--primary-bg-color) !important;
+}
+
+.hirewingImg {
+  width: 120px;
+  height: 50%;
+  margin-top: 7%;
+  /* width:100%; */
+  /* height: 100%; */
+  vertical-align: middle;
+  margin-right: 41px;
+  /* padding: 11px; */
+}
+
+.navbarHedding {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 24px;
+  font: normal normal 600 20px/29px Roboto;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 20px;
+  min-height: 136px !important;
+}
+
+.navbarHedding img {
+  width: 65px;
+  margin: 21px auto 22px;
+}
+
+.navbarHedding > div {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 11px;
+  box-shadow: 2px 2px 5px #d3d3d3;
+}
+
+.navbarHedding > div img {
+  margin: 0;
+}
+
+.MuiMenuItem-gutters {
+  display: block;
+  padding: 4px 12px;
+  margin: 2px 0;
+}
+
+.MuiMenu-list {
+  padding: 0;
+}
+
+.navbarSection > div {
+  top: 0px !important;
+  padding-top: 70px !important;
+  position: absolute;
+  height: 100vh;
+}
+
+.actionDropdown {
+  border-radius: 40px !important;
+  width: 160px;
+  height: 40px;
+  padding: 5px 20px 0;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  margin-right: 5px;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.actionDropdown input {
+  opacity: 1 !important;
+  border: none !important;
+  padding-left: 30px;
+  padding-bottom: 10px;
+  font-size: medium;
+  font-family: "Roboto";
+  border-radius: 50px !important;
+  width: 235px;
+  margin-left: 4px;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.font-weight-bold {
+  font-weight: bold !important;
+}
+
+.text-grey {
+  color: #454545 !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.activeHyperLink {
+  cursor: pointer !important;
+  display: inline-block !important;
+}
+.activeHyperLink:hover {
+  cursor: pointer !important;
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+
+.postingSuitcase {
+  width: 76px;
+  height: 63px;
+}
+
+.text-default {
+  color: #000;
+}
+
+.breadCrumbs {
+  margin: 0px -33px 20px !important;
+  height: 154px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: self-end;
+}
+
+.breadCrumbs ol li {
+  display: flex;
+  align-items: baseline;
+}
+
+.breadCrumbs ol li:last-child p {
+  font-weight: 600;
+}
+
+.breadCrumbs ol li * {
+  margin: 0 7px;
+  cursor: pointer;
+}
+
+.breadCrumbs ol li div {
+  width: 42px;
+  height: 29px;
+}
+
+.breadCrumbs ol {
+  width: 100%;
+  padding-bottom: 25px;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+
+.contentSection {
+  padding: 0px 15px;
+}
+
+.display-1 {
+  font-weight: 100;
+  font-size: 67px;
+  text-align: center;
+}
+
+input.Mui-disabled,
+.Mui-disabled,
+select:disabled {
+  -webkit-text-fill-color: #000 !important;
+  cursor: not-allowed !important;
+  /* background: #f3f3f3 !important; */
+  border-color: #e0e0e0 !important;
+}
+
+.labelCustom {
+  font-weight: bold !important;
+  margin-bottom: 22px;
+  display: block;
+}
+
+.SelectLabel {
+  font-size: 15px !important;
+  color: #262626 !important;
+  background: #f3f3f3;
+  display: inline-block !important;
+  padding: 0 4px !important;
+  margin: -9px 11px;
+  position: absolute !important;
+  font-weight: 500 !important;
+  z-index: 1;
+}
+
+.SelectLabel1 {
+  font-size: 15px !important;
+  color: #262626 !important;
+  background: rgb(255, 255, 255);
+  /* display: none !important ; */
+  font-weight: bold !important;
+  display: inline-block !important;
+  padding: 0 4px !important;
+  margin: -9px 11px;
+  position: absolute !important;
+  z-index: 1;
+}
+
+.boldlabel label {
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  color: #262626 !important;
+}
+.boldlabel1 label {
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  color: #262626 !important;
+}
+
+.headerLabel {
+  color: #262626 !important;
+  font-weight: 500 !important;
+  position: relative !important;
+  margin-bottom: 22px;
+  margin-left: -12px;
+}
+
+.headerLabel1 {
+  color: #262626 !important;
+  font-weight: bold !important;
+  margin-bottom: 0 !important;
+  margin-top: 17px !important;
+}
+
+
+.activebtn {
+  color: var(--primary-bg-color) !important;
+  font-weight: 600 !important;
+}
+
+.nonactivebtn:hover {
+  font-weight: 300 !important;
+}
+
+.MuiBr
+
+.MuiBreadcrumbs-ol li:nth-child(2) {
+  display: none;
+}
+
+.clientsearch .MuiAutocomplete-endAdornment,
+.clientsearch1 .MuiAutocomplete-endAdornment {
+  display: none !important;
+}
+
+.clientSearch1 {
+  border-radius: 50px;
+}
+
+.welcomeScreen {
+  position: absolute;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+/* /////////////////footer//////// */
+
+.footercomp{
+ height: 100% !important; 
+  background: #3B4046 0% 0% no-repeat padding-box;
+  border-radius: 50px 50px 0px 0px;
+  opacity: 1;
+}
+
+.footercomp ul{
+  display: flex;
+  list-style: none;
+  gap: 2%;
+  padding: 40px 0px 30px;
+  /* margin-top: 60px; */
+  margin-left: 50px;
+}
+
+.footercomp ul li{
+  width: 10%;
+  /* gap: 30px; */
+  text-align: center;
+  cursor: pointer;
+}
+.footercomp ul li .MuiLink-root{
+  text-decoration: none
+}
+
+.yellowbottom{
+  /* height: 73px; */
+  padding: 13px;
+  background: var(--unnamed-color-ffd800) 0% 0% no-repeat padding-box;
+  background: var(--primary-bg-color) 0% 0% no-repeat padding-box;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* //////////////////////////////////////////////////////// */
+
+
+.profileMenu {
+  width: 323px;
+  height: 215px;
+  padding: 12px 25px;
+}
+
+.profileMenu svg {
+  background: #fff;
+  width: 55px;
+  height: 55px;
+  padding: 9px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px #00000029;
+  margin-bottom: 10px;
+}
+
+.profileMenu h5 {
+  text-align: left;
+  font: normal normal normal 19px/28px Roboto;
+  letter-spacing: 0px;
+  color: #000000;
+  margin: 0;
+}
+
+.profileMenu p {
+  font: normal normal 400 14px/27px Roboto;
+  letter-spacing: 0px;
+  color: #000000;
+  margin: 0 0 27px;
+}
+
+.profileMenu div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profileMenu div button:first-child {
+  background: var(--primary-bg-color) 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  opacity: 1;
+  border: none;
+  color: var(--primary-background-text-color);
+  padding: 11px 21px;
+}
+
+.profileMenu div button:first-child:hover {
+  background: var(--primary-bg-color) 0% 0% no-repeat padding-box;
+  cursor: pointer;
+  border-color: var(--primary-bg-color);
+}
+
+.profileMenu div button:last-child {
+  background: #fff 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  opacity: 1;
+  border: 1px solid #d41317;
+  color: #d41317;
+  padding: 11px 21px;
+}
+
+.profileMenu div button:last-child:hover {
+  background: #b51013 0% 0% no-repeat padding-box;
+  cursor: pointer;
+  color: #fff;
+  border-color: #b51013;
+}
+
+.dynatableheadtext {
+  font-family: "Roboto" !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  text-transform: capitalize;
+}
+
+.dynatablebodytext {
+  font-family: "Roboto" !important;
+  font-weight: 400 !important;
+  text-transform: capitalize;
+  color: #000000 !important;
+  opacity: 100% !important;
+  font:  14px "Roboto" !important;
+}
+
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 26%);
+  border-radius: 10px;
+  background-color: #ebebeb;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #C9C9C9;
+  /* background-image: -webkit-linear-gradient(90deg,
+      transparent,
+      rgba(0, 0, 0, 0.213) 50%,
+      transparent,
+      transparent) */
+}
+
+.stepsSection {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.customRangePicker .MuiPickersDateRangePickerInput-rangeInputsContainer {
+  width: 100% !important;
+}
+
+.customRangePicker
+  .MuiTextField-root:first-child
+  .MuiOutlinedInput-notchedOutline {
+  border-right-color: #fff !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.customRangePicker
+  .MuiTextField-root:last-child
+  .MuiOutlinedInput-notchedOutline {
+  border-left-color: #fff !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.customRangePicker .MuiFormHelperText-contained {
+  display: none;
+}
+
+div[class*="materialui-daterange-picker-makeStyles-header"],
+div[class*="materialui-daterange-picker-MuiDivider-root"],
+div[class*="materialui-daterange-picker-MuiGrid-root"] ul{
+  display: none;
+}
+ul[class*="materialui-daterange-picker-MuiMenu-list"]{
+  display: block!important;
+}
+
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+  color: var(--primary-bg-color) !important;
+}
+
+@media only screen and (max-width:500px){
+  .footercomp{
+    display: none;
+  }
+
+}
+@media (min-width: 450px) {
+  .hamerburg {
+    display: none;
+  }
+}
+
+.activebtn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  /* border-bottom: 2px solid; */
+  bottom: -12px;
+}
+
+.groupButtons button{
+  background: #ffffff;
+  color: #000!important;
+  border: none!important;
+}
+
+.groupButtons button.active, .groupButtons button:hover{
+  background: var(--primary-bg-color);
+  color: var(--primary-background-text-color) !important;
+  font-weight: 600;
+}
+
+.groupButtons .MuiButtonGroup-contained{
+  border-radius: 30px!important;
+  overflow: hidden;
+}
+
+ul.listbtns {
+  padding: 0;
+  list-style: none;
+  margin-top: 7px;
+}
+
+
+table.jobsdatacss {
+  row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+
+table.jobsdatacss td {
+  width: 20px ;
+  text-align: center;
+}
+
+table.jobsdatacss tr td:first-child{
+  width: 155px;
+  text-align: left;
+  color: #262626;
+  font-weight: 500;
+}
+table.jobsdatacss tr td:last-child{
+  width: 250px;
+  text-align: left;
+  font-weight: 400;
+  color:  #A7A7A7;
+}
+
+.questionsarea{
+  border:1px solid #E5E5E5;
+  border-radius: 5px;
+  min-height: 52px;
+  margin-top: 35px;
+}
+
+.questionsarea h3 {
+  margin: -12px 0 0 10px;
+  font-size: 19px !important;
+  text-align: left;
+  background: #ffff;
+  display: table;
+  padding: 0px 6px;
+  color: #262626;
+}
+.questionsarea p {
+  margin: 10px 0 10px 11px;
+  text-align: left;
+  padding: 0px 6px;
+  color: #A7A7A7;
+  word-wrap: break-word;
+}
+
+.jobdatapreviewarea{
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.resumefilecontent{
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 0px 6px #00000029;
+border-radius: 10px;
+opacity: 1;
+width: 167px;
+height: 147px;
+position: absolute;
+right: 40px;
+}
+.pdficon{
+  width: 71px;
+  height: 68px;
+  margin-top: 20px;
+}
+.previewdownloadsection{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  /* width: 154px;
+  gap: 20px; */
+  cursor: pointer;
+
+}
+
+.previewicon ,.downloadicon{
+  font-size: 16px !important;
+  color:#3B4046 !important
+}
+.downloadicon:hover {
+  margin-top:0px !important;
+}
+
+.previewdownloadtext{
+  font-size: 12px !important;
+  color: #A7A7A7 !important;
+  align-items: center;
+  display: flex;
+  gap: 3px;
+}
+
+#submission .sidebar{
+  width: 800px;
+}
+
+.pagingRight .pagination-bar {
+  display: inline-flex;
+  margin-right: -14px;
+}
+
+.pagingRight {
+  text-align: right;
+}
+
+.activeRow {
+  cursor: pointer !important;
+}
+
+.floatBtn {
+  width: 50px;
+  position: absolute;
+  bottom: 45px;
+  right: 22px;
+  cursor: pointer;
+}
+
+.floatBtn svg {
+  box-shadow: 0px 4px 7px #a5a5a5;
+  border-radius: 50%;
+}
+
+.floatBtn:hover path {
+  fill: var(--primary-bg-color) !important;
+}
+
+.questions .MuiTypography-body1{
+  pointer-events: none!important;
+}
+
+.flagname .MuiListItemText-secondary {
+  color: inherit;
+  /* margin-top: 6px !important; */
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+
+.flagname {
+  text-transform: capitalize !important;
+}
+
+.countrydisplay {
+  display: flex !important;
+  width: 100%;
+  flex-direction: row !important;
+}
+
+.css-1d1r5q-MuiFormHelperText-root {
+  color: #d32f2f !important;
+}
+
+#personalDetails input[type="text"]{
+  height: 25px!important;
+}
+
+#userData .closeicon {
+  display: none;
+}
+.custom-header{
+  background-color: var(--header-background-color) !important;
+  color: var(--header-text-color) !important;
+}

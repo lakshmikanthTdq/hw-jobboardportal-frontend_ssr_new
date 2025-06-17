@@ -1,0 +1,48 @@
+.pageNotfound {
+    background: #F5F5F5;
+    width: 100vw;
+    height: 99.7vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.corners {
+    width: 100%;
+    height: 100%;
+}
+
+.corners:before {
+    content: url(../../../../public/assests/img/corners.svg);
+    position: absolute;
+    bottom: -440px;
+    left: -145px;
+}
+
+.corners:after {
+    content: url(../../../../public/assests/img/corners.svg);
+    position: absolute;
+    top: -370px;
+    right: -500px;
+}
+
+.pageNotfoundContent {
+    text-align: center;
+    margin-top: 12%;
+}
+
+.saveerror {
+    background-color: rgb(59, 64, 70)!important;
+    color: rgb(255, 255, 255)!important;
+    border-radius: 25px!important;
+    width: 8rem!important;
+    height: 45px!important;
+    text-transform: capitalize!important;
+    margin-top: 20px !important;
+}
+
+.saveerror:hover {
+    background: var(--primary-bg-color) !important;
+    color: var(--primary-background-text-color) !important;
+    font-weight: bolder !important;
+
+}
