@@ -24,7 +24,7 @@
   },
   "contributors": [],
   "scripts": {
-    "dev": "env-cmd -f .env.dev webpack --config webpack.config.js --watch",
+    "dev": "env-cmd -f .env.dev webpack --config webpack.config.js",
     "build": "env-cmd -f .env.prod webpack --config webpack.config.js",
     "uat": "env-cmd -f .env.uat webpack --config webpack.config.js",
     "start": "node dist/server.cjs"

@@ -13,7 +13,7 @@ COPY . .
 
 # Build the SSR app
 ENV NODE_OPTIONS=--max_old_space_size=2048
-RUN npm run build
+RUN npm run dev
 
 # Production image
 FROM --platform=linux/amd64 node:20-alpine
@@ -25,7 +25,7 @@ WORKDIR /app
 COPY --from=builder /app .
 
 # Copy environment file
-COPY .env.prod .env
+COPY .env.dev .env
 
 # Expose the SSR port
 EXPOSE 3006
